@@ -1,7 +1,7 @@
 <template>
   <header>
     <button class="random-btn">
-      random <span class="material-icons">loop</span>
+      random <span class="material-icons">sync</span>
     </button>
   </header>
 </template>
@@ -16,6 +16,12 @@
   display: flex;
   margin-left: auto;
   cursor: pointer;
+  transform: translateY(-1px);
+  transition: all 0.5s ease-in;
+}
+
+.random-btn:active {
+  transform: translateY(3px);
 }
 
 .random-btn span {

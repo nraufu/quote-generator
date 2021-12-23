@@ -1,1 +1,0 @@
-<template>random quote</template>

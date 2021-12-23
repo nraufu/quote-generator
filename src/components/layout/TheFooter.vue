@@ -10,17 +10,16 @@
 
 <style scoped>
 footer {
-  position: fixed;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 25px;
+  bottom: 0;
   text-align: center;
   color: #828282;
 }
 
 footer p {
   font-size: 14px;
-  font-weight: 500;
 }
 
 footer a {

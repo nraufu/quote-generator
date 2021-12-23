@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <the-header></the-header>
-
+    <router-view></router-view>
     <the-footer></the-footer>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
   color: #000;
   background: #fff;
   padding: 25px;
+  font-weight: 500;
 }
 
 .container {
