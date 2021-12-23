@@ -2,21 +2,19 @@
   <div class="container">
     <the-header></the-header>
 
-    <div class="quotes-container">
-      <quote></quote>
-    </div>
+    <the-footer></the-footer>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
-import Quote from "./components/quote/Quote.vue";
+import TheFooter from "./components/layout/TheFooter.vue";
 
 export default {
   name: "App",
   components: {
     TheHeader,
-    Quote,
+    TheFooter,
   },
 };
 </script>
@@ -36,5 +34,12 @@ export default {
   font-family: "Raleway", sans-serif;
   color: #000;
   background: #fff;
+  padding: 25px;
+}
+
+.container {
+  position: relative;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 </style>
