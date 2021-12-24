@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <the-header></the-header>
-    <router-view></router-view>
+    <router-view :randomQuote="randomQuote"></router-view>
     <the-footer></the-footer>
   </div>
 </template>
@@ -15,6 +15,45 @@ export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  data() {
+    return {
+      isLoading: false,
+      currentPage: 1,
+      randomQuote: {},
+    };
+  },
+  methods: {
+    generateRandomQuote() {
+      this.axios
+        .get(
+          `https://quote-garden.herokuapp.com/api/v3/quotes?page=${this.currentPage}`
+        )
+        .then((response) => {
+          const { pagination, data } = response.data;
+          this.currentPage = pagination.currentPage;
+
+          //generate random page
+          const randomPage = Math.floor(Math.random() * pagination.totalPages);
+          this.currentPage = randomPage;
+
+          //generate random quote from current page results data
+          const randomQuote = data[Math.floor(Math.random() * data.length)];
+          this.randomQuote = randomQuote;
+        })
+        .catch((error) => {
+          this.isLoading = false;
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.generateRandomQuote();
+  },
+  provide() {
+    return {
+      generateQuote: this.generateRandomQuote,
+    };
   },
 };
 </script>

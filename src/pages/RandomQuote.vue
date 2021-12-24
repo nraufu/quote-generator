@@ -1,17 +1,25 @@
 <template>
-  <div class="random-quote">
-    <base-quote></base-quote>
+  <div class="random-quote" v-if="randomQuote">
+    <base-quote :text="randomQuote.quoteText"></base-quote>
 
     <div class="view-more">
       <div class="quote-author">
-        <span class="quote-author__name">Bill Gates</span>
-        <span class="quote-author__gender">business</span>
+        <span class="quote-author__name">{{ randomQuote.quoteAuthor }}</span>
+        <span class="quote-author__gender">{{ randomQuote.quoteGenre }}</span>
       </div>
 
       <span class="material-icons arrow-icon">arrow_right_alt</span>
     </div>
   </div>
+
+  <p v-else>No quote</p>
 </template>
+
+<script>
+export default {
+  props: ["randomQuote"],
+};
+</script>
 
 <style scoped>
 .random-quote {

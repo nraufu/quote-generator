@@ -1,10 +1,16 @@
 <template>
   <header>
-    <button class="random-btn">
+    <button class="random-btn" @click="generateQuote">
       random <span class="material-icons">sync</span>
     </button>
   </header>
 </template>
+
+<script>
+export default {
+  inject: ["generateQuote"],
+};
+</script>
 
 <style scoped>
 .random-btn {
