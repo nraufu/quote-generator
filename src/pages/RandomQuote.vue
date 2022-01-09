@@ -1,12 +1,16 @@
 <template>
   <div class="random-quote" v-if="randomQuote">
-    <base-quote :text="randomQuote.quoteText"></base-quote>
+    <base-quote
+      :text="randomQuote.quoteText"
+      :isLoading="isLoading"
+    ></base-quote>
 
     <div class="view-more">
-      <div class="quote-author">
-        <span class="quote-author__name">{{ randomQuote.quoteAuthor }}</span>
-        <span class="quote-author__gender">{{ randomQuote.quoteGenre }}</span>
-      </div>
+      <author
+        :name="randomQuote.quoteAuthor"
+        :gender="randomQuote.quoteGenre"
+        :isLoading="isLoading"
+      ></author>
 
       <span class="material-icons arrow-icon">arrow_right_alt</span>
     </div>
@@ -16,8 +20,13 @@
 </template>
 
 <script>
+import Author from "./Author.vue";
+
 export default {
-  props: ["randomQuote"],
+  props: ["randomQuote", "isLoading"],
+  components: {
+    Author,
+  },
 };
 </script>
 
@@ -49,18 +58,5 @@ export default {
 
 .view-more .arrow-icon {
   color: #f2f2f2;
-}
-
-.quote-author__name {
-  display: block;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.quote-author__gender {
-  display: block;
-  font-size: 14px;
-  color: #828282;
 }
 </style>

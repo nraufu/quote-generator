@@ -1,12 +1,17 @@
 <template>
-  <div class="quote">
-    <p>“{{ text }}”</p>
+  <div class="quote" :class="isLoading && 'is-loading'">
+    <p v-if="!isLoading">“{{ text }}”</p>
+    <div v-if="isLoading" class="w-100">
+      <p class="skeleton skeleton-text"></p>
+      <p class="skeleton skeleton-text"></p>
+      <p class="skeleton skeleton-text"></p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["text"],
+  props: ["text", "isLoading"],
 };
 </script>
 
@@ -37,5 +42,12 @@ export default {
   width: 8px;
   height: 100%;
   background: #f7df94;
+  border-radius: 0;
+  transition: all 0.5s cubic-bezier(0.63, 0.42, 0.83, 0.67);
+}
+
+.quote.is-loading p::before {
+  height: 30%;
+  border-radius: 10px;
 }
 </style>
