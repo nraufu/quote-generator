@@ -9,10 +9,12 @@ const router = createRouter({
     {
       path: "/",
       component: RandomQuote,
+      props: true,
     },
     {
       path: "/quotes/:author",
       component: AuthorQuotes,
+      props: false,
     },
   ],
 });

@@ -1,5 +1,5 @@
 <template>
-  <div class="quote-author" v-if="!isLoading">
+  <div class="quote-author">
     <span class="quote-author__name">{{ name }}</span>
     <span class="quote-author__gender">{{ gender }}</span>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  props: ["name", "gender", "isLoading"],
+  props: ["name", "gender"],
 };
 </script>
 

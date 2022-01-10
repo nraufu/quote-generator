@@ -1,6 +1,14 @@
 <template>
   <header>
-    <button class="random-btn" @click="generateQuote">
+    <button class="header-btn" v-if="isQuotesPath" @click.prevent="goBack">
+      <span class="material-icons"> west </span> Go Back
+    </button>
+
+    <button
+      class="header-btn"
+      @click.prevent="generateQuote"
+      v-else-if="!isQuotesPath"
+    >
       random <span class="material-icons">sync</span>
     </button>
   </header>
@@ -9,11 +17,21 @@
 <script>
 export default {
   inject: ["generateQuote"],
+  computed: {
+    isQuotesPath() {
+      return this.$route.path.includes("/quotes");
+    },
+  },
+  methods: {
+    goBack() {
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
 <style scoped>
-.random-btn {
+.header-btn {
   background: none;
   outline: none;
   border: none;
@@ -26,11 +44,11 @@ export default {
   transition: all 0.5s ease-in;
 }
 
-.random-btn:active {
+.header-btn:active {
   transform: translateY(3px);
 }
 
-.random-btn span {
-  margin-left: 4px;
+.header-btn span {
+  margin: 0 4px;
 }
 </style>

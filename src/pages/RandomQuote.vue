@@ -5,7 +5,7 @@
       :isLoading="isLoading"
     ></base-quote>
 
-    <div class="view-more">
+    <router-link class="view-more" :to="toAuthorQuotes" v-show="!isLoading">
       <author
         :name="randomQuote.quoteAuthor"
         :gender="randomQuote.quoteGenre"
@@ -13,7 +13,7 @@
       ></author>
 
       <span class="material-icons arrow-icon">arrow_right_alt</span>
-    </div>
+    </router-link>
   </div>
 
   <p v-else>No quote</p>
@@ -26,6 +26,11 @@ export default {
   props: ["randomQuote", "isLoading"],
   components: {
     Author,
+  },
+  computed: {
+    toAuthorQuotes() {
+      return `/quotes/${this.randomQuote.quoteAuthor}`;
+    },
   },
 };
 </script>
@@ -48,6 +53,7 @@ export default {
   background: transparent;
   color: #4f4f4f;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
 
